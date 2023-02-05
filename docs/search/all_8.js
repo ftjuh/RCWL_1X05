@@ -1,10 +1,12 @@
 var searchData=
 [
-  ['sensor_0',['sensor',['../Full__demo_8ino.html#a5f13809fd5c1dd1d77829bb510bdeabd',1,'Full_demo.ino']]],
-  ['setfilter_1',['setFilter',['../classRCWL__1X05.html#a7d51c6a5cf12eddbd39ffeb4e9402ff6',1,'RCWL_1X05']]],
-  ['setmode_2',['setMode',['../classRCWL__1X05.html#ab683994ff8b530d09609a82280295a12',1,'RCWL_1X05']]],
-  ['settemperature_3',['setTemperature',['../classRCWL__1X05.html#a5f20d204430e68a5cccb4e7b4b9e0ce1',1,'RCWL_1X05']]],
-  ['settimeout_4',['setTimeout',['../classRCWL__1X05.html#abe93499abcc371d56920f03ad1128f9b',1,'RCWL_1X05']]],
-  ['setup_5',['setup',['../Full__demo_8ino.html#a4fc01d736fe50cf5b977f755b675f11d',1,'Full_demo.ino']]],
-  ['speedofsoundusedbyi2cmode_6',['speedOfSoundUsedByI2Cmode',['../RCWL__1X05_8h.html#ad273e57b1b689f192e244c078f033621',1,'RCWL_1X05.h']]]
+  ['rcwl_2d1005_20and_20rcwl_2d1605_20_28and_20hc_2dsr04_3cu_3ep_3c_2fu_3e_29_20i2c_2dmode_20arduino_20library_0',['RCWL-1005 and RCWL-1605 (and HC-SR04&lt;u&gt;P&lt;/u&gt;) I2C-mode Arduino library',['../md_README.html',1,'']]],
+  ['rcwl_5f1x05_1',['RCWL_1X05',['../classRCWL__1X05.html',1,'RCWL_1X05'],['../classRCWL__1X05.html#aef97914d64e946866bb4ef2d3ec03df6',1,'RCWL_1X05::RCWL_1X05()']]],
+  ['rcwl_5f1x05_20library_2',['RCWL_1X05 library',['../index.html',1,'']]],
+  ['rcwl_5f1x05_2ecpp_3',['RCWL_1X05.cpp',['../RCWL__1X05_8cpp.html',1,'']]],
+  ['rcwl_5f1x05_2eh_4',['RCWL_1X05.h',['../RCWL__1X05_8h.html',1,'']]],
+  ['rcwl_5f1x05_5faddr_5',['RCWL_1X05_ADDR',['../RCWL__1X05_8h.html#ad55b84cf8abdd37b457b94f1ba7bd378',1,'RCWL_1X05.h']]],
+  ['rcwl_5f1x05_5fmode_6',['RCWL_1X05_mode',['../classRCWL__1X05.html#a1d58e21b67756ed81577e1cd02e85d47',1,'RCWL_1X05']]],
+  ['read_7',['read',['../classRCWL__1X05.html#aa79463574d770217a9d0fb9eadd6e548',1,'RCWL_1X05']]],
+  ['readme_2emd_8',['README.md',['../README_8md.html',1,'']]]
 ];

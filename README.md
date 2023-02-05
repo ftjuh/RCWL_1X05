@@ -4,21 +4,21 @@ I purchased one of each of these cheap sensors recently from aliexpress for test
 
 My overall test results and experiences are a bit mixed, I think in many cases the good old HC-SR04 will still be an adequate choice, due to the 1X05's depressingly long minimum range of 25 cm.
 
-<sup>(*)</sup>Note: only after writing most of this up, I realized there is a "newer" **HC-SR04P** module (notice the "P") which probably uses the same flavor of chip. I expect that most of what I write here, as well as the library and the UART/serial example sketch, will apply.
+<sup>(*)</sup>Note: only after writing most of this up, I realized there is a "newer" **HC-SR04P** module (notice the "P") which probably uses the same flavor of chip. I expect that most of what I write here, as well as the library and the [UART/serial example sketch](https://github.com/ftjuh/RCWL_1X05/tree/main/examples/Serial_mode_demo), will apply.
 
 ## Library Usage
 
-The library for the sensors' [I2C interface](#i2c-mode) supports three modes of operation, `oneShot` (blocking), `triggered` (non blocking), and `continuous` (non blocking). See example code below and library documentation for `RCWL_1X05::setMode()`. 
+The library for the sensors' [I2C interface](#i2c-mode) supports three modes of operation, `oneShot` (blocking), `triggered` (non blocking), and `continuous` (non blocking). See example code below and library documentation for [`RCWL_1X05::setMode()`](https://ftjuh.github.io/RCWL_1X05/classRCWL__1X05.html). 
 
-Results can be raw or filtered, see `RCWL_1X05::setFilter()`. 
+Results can be raw or filtered, see [`RCWL_1X05::setFilter()`](https://ftjuh.github.io/RCWL_1X05/classRCWL__1X05.html). 
 
-The default timeout of 100 ms can be changed with `RCWL_1X05::setTimeout()`.
+The default timeout of 100 ms can be changed with [`RCWL_1X05::setTimeout()`](https://ftjuh.github.io/RCWL_1X05/classRCWL__1X05.html).
 
-A temperature correction is available, but due to incomplete documentation it might be off, see `RCWL_1X05::setTemperature()`.
+A temperature correction is available, but due to incomplete documentation it might be off, see [`RCWL_1X05::setTemperature()`](https://ftjuh.github.io/RCWL_1X05/classRCWL__1X05.html).
 
-By default, `Wire.h` is used, but other I2C libraries derived from `TwoWire` can replace it, see `RCWL_1X05::begin(TwoWire*,uint8_t)`.
+By default, `Wire.h` is used, but other I2C libraries derived from `TwoWire` can replace it, see [`RCWL_1X05::begin(TwoWire*,uint8_t)`](https://ftjuh.github.io/RCWL_1X05/classRCWL__1X05.html).
 
-Find the [full library documentation here](`RCWL_1X05::).
+Find the [full library documentation here](https://ftjuh.github.io/RCWL_1X05/).
 
 ### Example
 
@@ -28,9 +28,10 @@ Find the [full library documentation here](`RCWL_1X05::).
 
 RCWL_1X05 sensor;
 
-void setup() {
-  Serial.begin(115200);
-  Wire.begin(); // must(!) be called before sensor.begin()
+void setup() {  
+  Serial.begin(115200); delay (500);
+  Serial.println("==============\nRCWL_1X05 demo\n==============\n\n");  
+  Wire.begin(); // must be called before sensor.begin()
   if (not sensor.begin()) {
     Serial.println("Sensor not found. Check connections and I2C-pullups and restart sketch.");
     while (true) {}
@@ -39,30 +40,29 @@ void setup() {
     delay(1000);
   }
   
-  Serial.print("one shot mode measurement (blocking) = ");
-  sensor.setMode(oneShot); // not really needed, it's the default mode
-  Serial.print(sensor.read()); Sensor.println(" mm\n\n");
+  Serial.print("One shot mode measurement (blocking) = ");
+  sensor.setMode(RCWL_1X05::oneShot); // not really needed, it's the default mode
+  Serial.print(sensor.read()); Serial.println(" mm\n\n");
   delay(2000);
   
-  Serial.print("triggered mode measurement (non blocking) = ");
-  sensor.setMode(triggered);
+  Serial.print("Triggered mode measurement (non blocking) = ");
+  sensor.setMode(RCWL_1X05::triggered);
   sensor.trigger();
-  delay(100); // do something meaningful, here, but wait long enough before reading.
-  Serial.print(sensor.read()); Sensor.println(" mm\n\n");
+  delay(100); // do something meaningful here, but wait long enough before reading.
+  Serial.print(sensor.read()); Serial.println(" mm\n\n");
   delay(2000);
   
-  Serial.println("switching to continous mode measurement with filter and 50 ms timeout\n\n");
+  Serial.println("Switching to continuous mode measurement with filter and 50 ms timeout\n\n");
   sensor.setFilter(true); // filter is turned off by default
   sensor.setTimeout(50); // 100 ms is recommended, but lower values might work
-  sensor.setMode(continuous);  
+  sensor.setMode(RCWL_1X05::continuous);  
 }
     
 void loop() {
-  bool newData = sensor.update(); // calling update() repeatedly is crucial in continous mode
+  bool newData = sensor.update(); // calling update() repeatedly is crucial in continuous mode
   if (newData) {
-    Serial.print(sensor.read()); Sensor.println(" mm");
+    Serial.print(sensor.read()); Serial.println(" mm");
   }
-  // do your other stuff, here
 }
 
 ```
@@ -75,7 +75,7 @@ The English "**datasheet**" I included is compiled from different aliexpress pro
 
 ### Manufacturer homepage
 
-The **company website** of "Wuxi Richen Wulian Technology Co., Ltd." is hard to find, the one mentioned in the "datasheet", www.wx-rcwl.com, is not working. I managed to track them down with the help of the self-diagnostic company info which the modules provide in serial/UART mode (see `Serial_demo.ino`), by googling for the GB18030 encoded Chinese company name 无锡日晨物联, which led to the correct URL https://www.sz-rcwl.com/. However, they don't provide datasheets there, neither in the Chinese, nor the English page version. I tried to contact them, but have not heard back to date.
+The **company website** of "Wuxi Richen Wulian Technology Co., Ltd." is hard to find, the one mentioned in the "datasheet", www.wx-rcwl.com, is not working. I managed to track them down with the help of the self-diagnostic company info which the modules provide in serial/UART mode (see [`Serial_demo.ino`](https://github.com/ftjuh/RCWL_1X05/tree/main/examples/Serial_mode_demo)), by googling for the GB18030 encoded Chinese company name 无锡日晨物联, which led to the correct URL https://www.sz-rcwl.com/. However, they don't provide datasheets there, neither in the Chinese, nor the English page version. I tried to contact them, but have not heard back to date.
 
 ### RCWL-96XX chip
 
@@ -85,7 +85,7 @@ It seems both module use a **chip** developed by said manufacturer. Its name var
 
 I could not find any useful information on the **differences between the two versions**, apart from the diameter of the combined emitter/receiver, which is encoded in the first two digits, i.e. 10 mm (RCWL-1005) and 16 mm (RCWL-1605). I assume this diameter will have an impact on range, angle, and sensitivity, but I did not run systematic tests on that.
 
-Also, it could be both modules use different variants of the aforementioned chip, RCWL-9624 vs. RCWL-9623, but that could just be typos as well. I could not identify any chip label on my own modules. The serial/UART sketch shows that both modules correctly identify themselves as 1605 vs. 1005, so the chips differ at least in that regard.
+Also, it could be both modules use different variants of the aforementioned chip, RCWL-9624 vs. RCWL-9623, but that could just be typos as well. I could not identify any chip label on my own modules. The [serial/UART sketch](https://github.com/ftjuh/RCWL_1X05/tree/main/examples/Serial_mode_demo) shows that both modules correctly identify themselves as 1605 vs. 1005, so the chips differ at least in that regard.
 
 ### Interface modes
 
@@ -101,7 +101,7 @@ According to the schematic there's no **I2C pullups** included on the module, so
 
 #### UART/Serial mode
 
-Serial mode is also very basic, but it includes an additional info/version command. See `Serial_demo.ino` if you want to test it, but don't forget to set the 10K resistor at M1.
+Serial mode is also very basic, but it includes an additional info/version command. See [`Serial_demo.ino`](https://github.com/ftjuh/RCWL_1X05/tree/main/examples/Serial_mode_demo) if you want to test it, but don't forget to set the 10K resistor at M1.
 
 #### "GPIO"/Two wire mode
 

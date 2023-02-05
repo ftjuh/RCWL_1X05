@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['loop_0',['loop',['../Full__demo_8ino.html#afe461d27b9c48d5921c00d521181f12f',1,'Full_demo.ino']]]
+  ['myserial_0',['mySerial',['../Serial__mode__demo_8ino.html#a5246ec23d5154f850c0d6bcd5f0d8b28',1,'Serial_mode_demo.ino']]]
 ];
