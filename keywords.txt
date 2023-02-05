@@ -1,0 +1,18 @@
+
+# Classes
+RCWL_1X05	KEYWORD1
+# Structs
+# Typedefs
+# Enums
+RCWL_1X05_mode	LITERAL1
+oneShot	LITERAL1
+triggered	LITERAL1
+continous	LITERAL1
+# Methods
+setMode	KEYWORD2
+setTemperature	KEYWORD2
+setTimeout	KEYWORD2
+read	KEYWORD2
+trigger	KEYWORD2
+update	KEYWORD2
+setFilter	KEYWORD2
