@@ -1,3 +1,12 @@
+/*
+  RCWL-1X05 library demo (I2C mode only)
+
+  Solder a 10K resistor to the M2 (=R6) solder bridge and leave M1 (=R8) open to put the module into I2C mode.
+
+  (c) juh, 2023
+
+*/
+
 #include <RCWL_1X05.h>
 #include <Wire.h>
 
