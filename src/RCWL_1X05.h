@@ -78,12 +78,12 @@ public:
   bool begin();
   
   /*!
-   * @brief Choose mode of operation, default is oneShot. Will determine what 
+   * @brief Choose mode of operation, default is RCWL_1X05::oneShot. Will determine what 
    * will happen when you call read().
    * @param newMode One of (see @ref RCWL_1X05_mode)
    * 
    * - RCWL_1X05::oneShot: read() will initiate a measurement, wait for its completion and 
-   * return the measured value. Note that read() is blocking in this mode.
+   * return the measured value. Note that read() is blocking in this mode, it will not return before the measurement cycle is complete.
    * - RCWL_1X05::triggered: You'll need to manually initiate a measurement with trigger(),
    * after that your sketch is free to do something else. You can read() the
    * value after measurement has been completed, but it is your responsibility
@@ -92,7 +92,7 @@ public:
    * measurement has completed. However, this happens not automatically (no 
    * interrupt magic, here), instead your code needs to call update() as often as 
    * possible in this mode. read() will return the most recent completed 
-   * measurement, so results may be stale (see @ref setTimeout()).
+   * measurement, so depending on timeout and your update frequency results may be stale (see @ref setTimeout()).
    */
   void setMode(RCWL_1X05_mode newMode);
   

@@ -4,6 +4,10 @@ I purchased one of each of these cheap sensors recently from aliexpress for test
 
 My overall test results and experiences are a bit mixed, I think in many cases the good old HC-SR04 will still be an adequate choice, due to the 1X05's depressingly long minimum range of 25 cm.
 
+I made a fischertechnik compatible case for both versions which you can find [over at thingiverse](https://www.thingiverse.com/thing:5838291) or [printables](https://www.printables.com/model/392683-rcwl-1005-and-rcwl-1605-sonar-distance-sensors-for):
+
+![](https://media.printables.com/media/prints/392683/images/3280468_8f6db9bb-2725-4212-bf64-717d14f31324/thumbs/cover/320x240/jpg/large_display_7ccf3435-9618-410b-87d5-97b983dc44c0_392683.webp)
+
 <sup>(*)</sup>Note: only after writing most of this up, I realized there is a "newer" **HC-SR04P** module (notice the "P") which probably uses the same flavor of chip. I expect that most of what I write here, as well as the library and the [UART/serial example sketch](https://github.com/ftjuh/RCWL_1X05/tree/main/examples/Serial_mode_demo), will apply.
 
 ## Library Usage

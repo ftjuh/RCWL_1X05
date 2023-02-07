@@ -138,13 +138,6 @@ uint32_t RCWL_1X05::applyTemperatureCorrection(uint32_t oldDistance) {
   return (((oldDistance * 1000 * 100) / speedOfSoundUsedByI2Cmode) * speedOfSound / 1000 / 100);
 }
 
-/*!
- *   @brief Get measurement. Operation and usage depends on current mode, @ref
- *   setMode() for details.
- *   @returns distance in millimeters, 0 on timeout. Note that minimal
- *   distance/blind zone of the sensor is 250mm(!), so any value less or equal
- *   250mm cannot be trusted.
- */
 uint32_t RCWL_1X05::read() {
   switch (mode) {
     case oneShot : {
