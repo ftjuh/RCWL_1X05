@@ -156,6 +156,7 @@ uint32_t RCWL_1X05::read() {
       break;
     }
   }
+  return 0; 
 }
 
 
